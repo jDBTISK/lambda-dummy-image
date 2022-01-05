@@ -1,0 +1,13 @@
+### Python ###
+__pycache__/
+
+### terraform ###
+**/.terraform/*
+*.log
+*.tfstate
+*.tfvars
+*.tfstate.backup
+
+# Environments
+.env
+.venv

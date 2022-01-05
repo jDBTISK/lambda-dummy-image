@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "lambda-dummy-image"
+version = "0.1.0"
+description = "ECR に置いておく Lambda 用ダミーイメージ"
+authors = ["jDBTISK <de7aef3fd77mt6@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.16.0"
+taskipy = "^1.9.0"
+black = "^21.12b0"
+isort = "^5.10.1"
+mypy = "^0.930"
+flake8 = "^4.0.1"
+flake8-bugbear = "^21.11.29"
+flake8-builtins = "^1.5.3"
+flake8-eradicate = "^1.2.0"
+flake8-expression-complexity = "^0.0.9"
+flake8-cognitive-complexity = "^0.1.0"
+flake8-pytest-style = "^1.6.0"
+pep8-naming = "^0.12.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+fmt = "task fmt-black && task fmt-isort"
+fmt-black = "black src"
+fmt-isort = "isort src"
+lint = "task lint-black && task lint-flake8 && task lint-mypy"
+lint-flake8 = "flake8 src"
+lint-mypy = "mypy src"
+lint-black = "black --check src"
+
+[tool.mypy]
+python_version = 3.9
+# エラーメッセージ詳細表示
+show_error_context = true
+# エラー行列数表示
+show_column_numbers = true
+# 解決できないインポートを無視
+ignore_missing_imports = true
+# 型アノテーションのない関数定義を禁止
+disallow_untyped_defs = true
+# 引数に None 代入は Optional 必須
+no_implicit_optional = true
+# 戻り値が Any じゃない関数で Any が返されているものを WARN 出力
+warn_return_any = true
+# 本来エラーが起きない場所に `# type: ignore` が書かれているものを WARN 出力
+warn_unused_ignores = true
+# 冗長なキャストを WARN 出力
+warn_redundant_casts = true
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+line_length = 79

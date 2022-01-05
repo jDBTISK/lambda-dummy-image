@@ -1,0 +1,21 @@
+#!/bin/bash
+
+##
+# tfsec
+# =====
+# tfsec をインストールしてなくても docker から tfsec を叩きたい人用
+#
+# Usage:
+#   tfsec
+#
+# Requirements:
+#   - docker
+
+BIN_DIR=$(
+  cd $(dirname ${0})
+  pwd
+)
+ROOT_DIR=$(dirname ${BIN_DIR})
+TF_DIR="${ROOT_DIR}/terraform"
+
+docker run --rm -v ${TF_DIR}:/data ghcr.io/terraform-linters/tflint:latest
