@@ -42,13 +42,13 @@ jobs:
         run: terraform fmt -check -recursive
 
       - name: Terraform Init
-        run: terraform init -backend-config "bucket={{ secrets.TF_BACKEND_S3_BUCKET }}"
+        run: terraform init -backend-config "bucket=${{ secrets.TF_BACKEND_S3_BUCKET }}"
 
       - name: Terraform Validate
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -var "assume_role_arn={{ secrets.TF_ASSUME_ROLE_ARN }}"
+        run: terraform plan -var "assume_role_arn=${{ secrets.TF_ASSUME_ROLE_ARN }}"
 
       - name: TFLint
         uses: reviewdog/action-tflint@master
