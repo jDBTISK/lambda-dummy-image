@@ -1,5 +1,7 @@
 # Lambda Dummy Image
 
+[![apply](https://github.com/jDBTISK/lambda-dummy-image/actions/workflows/apply.yml/badge.svg?branch=main)](https://github.com/jDBTISK/lambda-dummy-image/actions/workflows/apply.yml)
+
 ## Overview
 
 `AWS Lambda` でデプロイパッケージに `Image` を選択した場合にとりあえず使えるイメージ
