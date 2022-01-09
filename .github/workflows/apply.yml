@@ -79,8 +79,8 @@ jobs:
         with:
           push: true
           tags: |
-            ${ECR_REPOSITORY_URL}:latest
-            ${ECR_REPOSITORY_URL}:${SHORT_SHA}
+            ${{ env.ECR_REPOSITORY_URL }}:latest
+            ${{ env.ECR_REPOSITORY_URL }}:${{ env.SHORT_SHA }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
