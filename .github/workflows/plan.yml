@@ -9,6 +9,11 @@ on:
       - ".github/workflows/plan.yml"
       - "terraform/.tflint.hcl"
 
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: read
+
 jobs:
   plan:
     name: Plan
