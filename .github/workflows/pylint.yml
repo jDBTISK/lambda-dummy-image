@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "src/**.py"
+      - ".github/workflows/pylint.yml"
 
 jobs:
   pylint:
