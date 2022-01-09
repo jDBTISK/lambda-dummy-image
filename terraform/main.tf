@@ -1,6 +1,5 @@
 data "aws_caller_identity" "this" {}
 
-# tfsec:ignore:AWS078
 # NOTE: latest 運用
 resource "aws_ecr_repository" "lambda" {
   name = local.ecr_image_name
