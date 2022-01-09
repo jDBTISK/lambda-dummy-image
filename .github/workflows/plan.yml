@@ -19,6 +19,10 @@ jobs:
     name: Plan
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./terraform
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -44,7 +48,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var "assume_role_arn={{ secrets.TF_ASSUME_ROLE_ARN }}"
 
       - name: TFLint
         uses: reviewdog/action-tflint@master
