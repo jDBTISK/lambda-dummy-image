@@ -1,0 +1,29 @@
+#!/bin/bash
+
+##
+# terraform
+# =========
+# terraform をインストールしてなくても docker から terraform を叩きたい人用
+# terraform/.terraform-version のバージョンで動作
+#
+# Usage:
+#   terraform <command>
+#   command: ex. plan
+#
+# Requirements:
+#   - docker
+
+BIN_DIR=$(
+  cd $(dirname ${0})
+  pwd
+)
+ROOT_DIR=$(dirname ${BIN_DIR})
+TF_DIR=${ROOT_DIR}/terraform
+
+TF_VERSION=$(cat ${TF_DIR}/.terraform-version)
+
+docker run -it --rm \
+  -w /terraform \
+  -v ${TF_DIR}:/terraform \
+  -v ${HOME}/.aws:/root/.aws \
+  hashicorp/terraform:${TF_VERSION} "${@}"
