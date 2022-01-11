@@ -24,7 +24,7 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.ACTIONS_ASSUME_ROLE_ARN }}
+          role-to-assume: ${{ secrets.ASSUME_ROLE_ARN }}
           role-session-name: github-actions-terraform-apply-session
           aws-region: ap-northeast-1
 
@@ -39,7 +39,7 @@ jobs:
         working-directory: ./terraform
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var "assume_role_arn=${{ secrets.TF_ASSUME_ROLE_ARN }}"
+        run: terraform apply -auto-approve
         working-directory: ./terraform
 
       - name: Output ECR Login Address
@@ -64,12 +64,6 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: ${{ secrets.ECR_PUSH_ASSUME_ROLE_ARN }}
-          role-session-name: github-actions-ecr-push-session
-          aws-region: ap-northeast-1
 
       - name: Login to Amazon ECR
         id: login-ecr
