@@ -1,12 +1,12 @@
 #!/bin/bash
 
 ##
-# tflint
-# ======
-# tflint をインストールしてなくても docker から tflint を叩きたい人用
+# tfsec
+# =====
+# tfsec をインストールしてなくても docker から tfsec を叩きたい人用
 #
 # Usage:
-#   tflint
+#   tfsec
 #
 # Requirements:
 #   - docker
